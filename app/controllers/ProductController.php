@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Http\Response;
+
 class ProductController extends \BaseController {
   
   /**
@@ -31,6 +33,29 @@ class ProductController extends \BaseController {
     return View::make('edit-product', array (
         'product' => $product 
     ));
+  }
+  
+  public function attachProduct($id) {
+    $templateId = Input::get("template_id");
+    
+    $template =  ProductTemplate::find($templateId);    
+    $company = Company::find($id);
+    
+    if(!$template || !$company) {
+      return new Response('', 402);
+    }
+    
+    $product = new Product();
+    $product->company = $company;
+    $product->template = $template;
+
+    $product->push();
+  }
+  
+  
+  public function deleteProduct($id, $productId) {
+    Product::delete($productId);
+    return new Response('', 204);
   }
   
   /**

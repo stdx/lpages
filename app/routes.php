@@ -25,6 +25,9 @@ Route::resource('products', 'ProductController');
 Route::resource('companies', 'CompanyController');
 Route::resource('templates', 'TemplateController');
 Route::get('companies/{id}/products','ProductController@indexByCompany');
+Route::post('companies/{id}/products','ProductController@attachProduct');
+Route::delete('companies/{id}/products/{productId}','ProductController@deleteProduct');
+
 
 Route::get("login", 'HomeController@showLogin');
 Route::post("auth", 'HomeController@login');
