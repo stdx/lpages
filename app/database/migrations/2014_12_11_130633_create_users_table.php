@@ -24,10 +24,10 @@ class CreateUsersTable extends Migration {
       
       DB::table('users')->insert(
       array(
-      'email' => 'beyer@chemmedia.de',
-      'last_name' => 'Beyer',
-      'first_name' => 'Anke',
-      'birthday' => '1986-07-11'
+      'email' => 'mustermann@example.com',
+      'last_name' => 'Mustermann',
+      'first_name' => 'Max',
+      'birthday' => '1970-01-01'
           )
       );
 	}
